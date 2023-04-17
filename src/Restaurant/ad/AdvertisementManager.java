@@ -11,7 +11,9 @@ public class AdvertisementManager {
         this.timeSeconds = timeSeconds;
     }
 
-    public void processVideos() {
-        ConsoleHelper.writeMessage("processVideos method calling");
+    public void processVideos() throws NoVideoAvailableException {
+        if (storage.list().isEmpty()) {
+            throw new NoVideoAvailableException();
+        };
     }
 }
