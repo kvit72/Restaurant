@@ -26,6 +26,6 @@ public class AdvertisementStorage {
     }
 
     public void add(Advertisement advertisement) {
-        videos.add(advertisement)
+        videos.add(advertisement);
     }
 }
