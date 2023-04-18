@@ -16,15 +16,16 @@ public class Restaurant {
         }
 
         Cook cook1 = new Cook("Dima");
-        Cook cook2 = new Cook("Dima");
+        Cook cook2 = new Cook("Sasha");
 
         StatisticManager.getInstance().register(cook1);
         StatisticManager.getInstance().register(cook2);
 
+        OrderManager orderManager = new OrderManager();
+
         for (Tablet tablet :
                 tablets) {
-            tablet.addObserver(cook1);
-            tablet.addObserver(cook2);
+            tablet.addObserver(orderManager);
         }
 
         Thread thread = new Thread(new RandomOrderGeneratorTask(tablets, ORDER_CREATING_INTERVAL));
