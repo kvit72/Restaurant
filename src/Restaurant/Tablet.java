@@ -11,7 +11,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Tablet extends Observable {
+public class Tablet {
     private final int number;
     private static Logger logger = Logger.getLogger(Tablet.class.getName());
     private LinkedBlockingQueue<Order> queue;
@@ -37,8 +37,7 @@ public class Tablet extends Observable {
         if (order.isEmpty())
             return true;
 
-        setChanged();
-        notifyObservers(order);
+        queue.offer(order);
 
         new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
         return false;
